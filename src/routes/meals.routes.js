@@ -36,3 +36,5 @@ router
 .get(mealMiddleware.validMeal, mealController.findOneMeal)
 .patch(authMiddleware.protectAccountOwner, authMiddleware.restrictTo('admin'), mealController.updateMeal)
 .delete(authMiddleware.protectAccountOwner, authMiddleware.restrictTo('admin'), mealController.deleteMeal);
+
+module.exports = router;

@@ -12,6 +12,8 @@ const userMiddleware = require('../middlewares/user.middleware');
 const restaurantMiddleware = require('../middlewares/restaurant.middleware');
 const orderMiddleware = require('../middlewares/order.middleware');
 
+const router = express.Router();
+
 
 router.use(authMiddleware.protect)
 
@@ -26,4 +28,6 @@ router.route('/me')
 router.route('/:id')
 .patch(authMiddleware.protectAccountOwner, orderMiddleware.validOrder, orderController.updateOrder)
 .delete(authMiddleware.protectAccountOwner, orderMiddleware.validOrder, orderController.deleteOrder);
+
+module.exports = router;
 

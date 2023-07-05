@@ -12,6 +12,8 @@ const globalErrorHandler = require('./controllers/error.controller');
 //Routes
 const userRoutes = require('./routes/user.routes');
 const restaurantRoutes = require('./routes/restaurant.routes');
+const mealRoutes = require('./routes/meals.routes');
+const orderRoutes = require('./routes/orders.routes');
 
 const app = express();
 
@@ -43,6 +45,8 @@ app.use('/api/v1', limiter);
 //rutas
 app.use(routes.users, userRoutes);
 app.use(routes.restaurants, restaurantRoutes);
+app.use(routes.restaurants, mealRoutes);
+app.use(routes.restaurants, orderRoutes);
 
 app.all('*', (req, res, next) => {
   return next(
